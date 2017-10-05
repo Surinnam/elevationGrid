@@ -23,5 +23,5 @@ class Handler:
         requestURL = self.baseURL+"locations={},{}&key={}".format(target.latitude, target.longitude, API_KEY)
         response = urlopen(requestURL)
         jsonResponse = json.loads(response.read());
-        print(jsonResponse)
+        return jsonResponse["results"][-1]["elevation"]
     

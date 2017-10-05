@@ -8,6 +8,7 @@ Retrieve altitude on a grid
 
 from coordinate import Coordinate
 from requestHandler import Handler
+from conversion import hashCoordinate
 
 class Grid:
     """
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     test_point.printAsDMS()
     new_point = test_point.travel(0, 50000)
     print(new_point)
-    newHandler = Handler()
-    newHandler.getElevation(test_point)
+    #newHandler = Handler()
+    #print(newHandler.getElevation(test_point))
+    print(hashCoordinate(-179.98321))
     
