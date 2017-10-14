@@ -29,7 +29,10 @@ if __name__ == "__main__":
     test_point.printAsDMS()
     new_point = test_point.travel(0, 50000)
     print(new_point)
-    #newHandler = Handler()
+    newHandler = Handler()
     #print(newHandler.getElevation(test_point))
     print(hashCoordinate(-179.98321))
-    
+    targetList = [Coordinate(17.7391536, -25.9847034),
+                  Coordinate(-11.455556, 37.866667)]
+    print(newHandler.getMultipleElevations(targetList))
+    print(newHandler.getOnPath(targetList, 10))
