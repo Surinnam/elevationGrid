@@ -39,7 +39,30 @@ class Grid:
             lineLimits = [currentPoint,
                           currentPoint.travel(pi/2, self.size)]
             self.grid[i] = self.gridHandler.getOnPath(lineLimits, self.columns)
+            self.gridHandler.hold()
             currentPoint = currentPoint.travel(pi, betweenLines)
+
+    def writeAsPython(self, fileName=None, gridName="elevationGrid"):
+        """
+        Writes the grid as a Python 2D list in given file
+        If no filename is provided default output will be stdout
+        """
+        gridString = "{}=".format(gridName)
+        for i in range(self.lines):
+            gridString+="["
+            for j in range(self.columns):
+                gridString+="{},".format(self.grid[i][j])
+            gridString = gridString[:-1]+"],"
+        gridString[-1] = "]"
+        if (fileName is None):
+            print(gridString)
+        else:
+            openFile = open(fileName, 'w')
+            openFile.write(gridString)
+            openFile.close()
+            
+        
+    
         
 
 if __name__ == "__main__":
@@ -57,4 +80,4 @@ if __name__ == "__main__":
     print(newHandler.getOnPath(targetList, 10))
     test_grid = Grid(test_point, newHandler, 1000, 10, 10)
     test_grid.fillGrid()
-    print(test_grid.grid())
+    test_grid.writeAsPython()
